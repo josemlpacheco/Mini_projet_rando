@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Randojoelette</string>
+    <string name="s_identifier">S\'identifier</string>
+    <string name="randojoelette">Randojoelette</string>
+    <string name="title_activity_accueil">AccueilActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="mes_randonnees">Mes randonnées</string>
+</resources>
