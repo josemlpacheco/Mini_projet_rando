@@ -17,4 +17,14 @@
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
         android:textStyle="bold"/>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+    </androidx.recyclerview.widget.RecyclerView>
+</ScrollView>
 </LinearLayout>

@@ -2,16 +2,17 @@ package com.project.draggerlogin;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.project.draggerlogin.ui.dashboard.DashboardFragment;
-import com.project.draggerlogin.ui.home.HomeFragment;
-import com.project.draggerlogin.ui.notifications.NotificationsFragment;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.project.draggerlogin.ui.dashboard.DashboardFragment;
+import com.project.draggerlogin.ui.home.HomeFragment;
+import com.project.draggerlogin.ui.notifications.NotificationsFragment;
 
 public class AccueilActivity extends AppCompatActivity {
     private ActionBar toolbar;
@@ -26,7 +27,7 @@ public class AccueilActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Mes randonnées");
-        loadFragment(new HomeFragment());
+        loadFragment(new DashboardFragment());
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

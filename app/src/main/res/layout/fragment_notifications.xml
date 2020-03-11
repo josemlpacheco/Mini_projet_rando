@@ -9,12 +9,13 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/monProfil"
+        android:id="@+id/associations"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mon profil"
+        android:text="Mon Profil"
         android:textSize="40dp"
         android:textColor="@color/colorPrimaryDark"
         android:gravity="center"
         android:textStyle="bold"/>
+
 </LinearLayout>
