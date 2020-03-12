@@ -7,4 +7,11 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="mes_randonnees">Mes randonnées</string>
+    <string name="valider">Valider</string>
+    <string name="ajouter">Ajouter</string>
+    <string name="ajout_rando">Ajouter une randonnée</string>
+    <string name="modif_lasso">Modifier l\'association</string>
+    <string name="modif_larando">Modifier la randonnée</string>
+    <string name="supp_lasso">Supprimer l\'association</string>
+    <string name="supp_larando">Supprimer la randonnée</string>
 </resources>
