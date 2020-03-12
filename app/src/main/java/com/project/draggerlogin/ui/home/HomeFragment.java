@@ -10,11 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.draggerlogin.R;
-import com.project.draggerlogin.retrofit.ApiClient;
 import com.project.draggerlogin.retrofit.ApiClient_mes_randonnees;
 import com.project.draggerlogin.retrofit.ApiInterface_mes_randonnees;
 import com.project.draggerlogin.retrofit.ReclyclerAdapterMesRandonnees;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,36 +33,52 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
     }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        //recyclerView = findViewById(R.id.recycleView);
         recyclerView = view.findViewById(R.id.recycleView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
         apiInterface = ApiClient_mes_randonnees.getApiClient().create(ApiInterface_mes_randonnees.class);
 
-        Call<List<Randonnee>> call = apiInterface.getMesRandonnees("jose@gmail.com","Qwerty1234.");
+        Call<JSONObject> call = apiInterface.getMesRandonnees("jose@gmail.com","Qwerty1234.");
 
-        call.enqueue(new Callback<List<Randonnee>>() {
+        call.enqueue(new Callback<JSONObject>() {
             @Override
-            public void onResponse(Call<List<Randonnee>> call, Response<List<Randonnee>> response) {
+            public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
                 System.out.println("raw-->: "+response.raw());
                 System.out.println("body-->: "+response.body().toString());
                 System.out.println("message-->: "+response.message());
                 System.out.println("toString-->: "+response.toString());
-                mesRandonnees = response.body();
-                adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
-                recyclerView.setAdapter(adapter);
+                parseRandonneeJson(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Randonnee>> call, Throwable t) {
+            public void onFailure(Call<JSONObject> call, Throwable t) {
                 System.out.println("erreur");
                 System.out.println("error -----> "+ t.toString());
             }
         });
         return view;
+    }
+
+    private void parseRandonneeJson(JSONObject response) {
+        try {
+            if (response.getString("status").equals("true")) {
+                System.out.println("Enviando informacion");
+                mesRandonnees.add(new Randonnee(new Date(),"iut de laval"));
+                adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
+                recyclerView.setAdapter(adapter);
+            }else{
+                System.out.println("No funciona pero almenos lo muestra");
+                mesRandonnees.add(new Randonnee(new Date(),"iut de laval"));
+                adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
+            }
+            System.out.println("No funciona pero almenos lo muestra afuerita");
+            mesRandonnees.add(new Randonnee(new Date(),"iut de laval"));
+            adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,6 +2,8 @@ package com.project.draggerlogin.retrofit;
 
 import com.project.draggerlogin.ui.home.Randonnee;
 
+import org.json.JSONObject;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import retrofit2.http.POST;
 public interface ApiInterface_mes_randonnees {
     @FormUrlEncoded
     @POST("/MyProjects/mini_projet/mesrandonnees.php")
-    Call<List<Randonnee>> getMesRandonnees(
+    Call<JSONObject> getMesRandonnees(
             @Field("mail") String mail,
             @Field("password") String password
     );

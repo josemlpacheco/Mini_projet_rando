@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient_mes_randonnees {
-    public static final String BASE_URL = "http://172.18.231.62/MyProjects/";
+    public static final String BASE_URL = "http://192.168.43.40/MyProjects/";
     public static Retrofit retrofit = null;
 
     public static Retrofit getApiClient(){

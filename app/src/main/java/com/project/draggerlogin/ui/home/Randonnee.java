@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class Randonnee {
+    @SerializedName("id_rando")
+    private int id;
     @SerializedName("date")
     private Date date;
     @SerializedName("place")
@@ -18,7 +20,8 @@ public class Randonnee {
     @SerializedName("date_limit")
     private Date date_limit;
 
-    public Randonnee(Date date, String place, int nb_part_min, int nb_part_max, int nb_part_miss, Date date_limit) {
+    public Randonnee(int id, Date date, String place, int nb_part_min, int nb_part_max, int nb_part_miss, Date date_limit) {
+        this.id = id;
         this.date = date;
         this.place = place;
         this.nb_part_min = nb_part_min;
@@ -27,6 +30,17 @@ public class Randonnee {
         this.date_limit = date_limit;
     }
 
+    public Randonnee(Date date,String place){
+        this.date = date;
+        this.place = place;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public Date getDate() {
         return date;
     }

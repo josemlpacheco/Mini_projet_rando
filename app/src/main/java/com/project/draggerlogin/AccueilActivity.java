@@ -27,7 +27,7 @@ public class AccueilActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Mes randonnées");
-        loadFragment(new DashboardFragment());
+        loadFragment(new HomeFragment());
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
