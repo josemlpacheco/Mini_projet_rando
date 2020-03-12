@@ -1,5 +1,6 @@
 package com.project.draggerlogin.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.project.draggerlogin.R;
 import com.project.draggerlogin.retrofit.ApiClient_mes_randonnees;
 import com.project.draggerlogin.retrofit.ApiInterface_mes_randonnees;
 import com.project.draggerlogin.retrofit.ReclyclerAdapterMesRandonnees;
+import com.project.draggerlogin.ui.randonnee.AddRandoFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
