@@ -13,6 +13,7 @@ import com.project.draggerlogin.ui.home.Randonnee;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ReclyclerAdapterMesRandonnees extends RecyclerView.Adapter<Reclycle
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.place.setText(mesRandonnees.get(position).getPlace());
         Date date = mesRandonnees.get(position).getDate();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
         String strDate = dateFormat.format(date);
         holder.date.setText(strDate);
     }

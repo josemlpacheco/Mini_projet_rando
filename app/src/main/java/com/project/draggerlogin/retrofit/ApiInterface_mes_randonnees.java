@@ -15,7 +15,7 @@ import retrofit2.http.POST;
 public interface ApiInterface_mes_randonnees {
     @FormUrlEncoded
     @POST("/MyProjects/mini_projet/mesrandonnees.php")
-    Call<JSONObject> getMesRandonnees(
+    Call<String> getMesRandonnees(
             @Field("mail") String mail,
             @Field("password") String password
     );

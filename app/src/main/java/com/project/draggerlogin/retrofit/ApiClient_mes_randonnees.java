@@ -10,7 +10,7 @@ public class ApiClient_mes_randonnees {
 
     public static Retrofit getApiClient(){
         if (retrofit == null){
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
+            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(ScalarsConverterFactory.create()).build();
         }
         return retrofit;
     }
