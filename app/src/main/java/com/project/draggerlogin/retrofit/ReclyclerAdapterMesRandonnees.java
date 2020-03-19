@@ -6,14 +6,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.project.draggerlogin.R;
+import com.project.draggerlogin.ui.home.HomeFragment;
 import com.project.draggerlogin.ui.home.Randonnee;
+import com.project.draggerlogin.ui.randonnee.AffRandoFragment;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -49,11 +51,24 @@ public class ReclyclerAdapterMesRandonnees extends RecyclerView.Adapter<Reclycle
 
         TextView place,date;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             place = itemView.findViewById(R.id.place);
             date = itemView.findViewById(R.id.date);
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+/*                    new AlertDialog.Builder(itemView.getContext())
+                            .setTitle("Succès")
+                            .setMessage("Cette page redige vers les details")
+                            .show();*/
+                    AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                    AffRandoFragment affRandoFragment = new AffRandoFragment();
+                    //Create a bundle to pass data, add data, set the bundle to your fragment and:
+                    activity.getSupportFragmentManager().beginTransaction().replace(R.id.container, affRandoFragment).addToBackStack(null).commit();
+                }
+            });
         }
+
     }
 }

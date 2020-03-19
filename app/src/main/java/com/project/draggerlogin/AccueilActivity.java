@@ -100,7 +100,7 @@ public class AccueilActivity extends AppCompatActivity {
             return false;
         }
     };
-    private void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);

@@ -107,8 +107,6 @@ public class HomeFragment extends Fragment {
                 mesRandonnees.add(new Randonnee(new Date(),"iut de laval"));
                 adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
                 recyclerView.setAdapter(adapter);
-            }else{
-                System.out.println("Enviando informacion");
             }
         } catch (JSONException e) {
             e.printStackTrace();
