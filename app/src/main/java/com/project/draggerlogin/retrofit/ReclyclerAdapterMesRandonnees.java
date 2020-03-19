@@ -35,7 +35,7 @@ public class ReclyclerAdapterMesRandonnees extends RecyclerView.Adapter<Reclycle
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.place.setText(mesRandonnees.get(position).getPlace());
         Date date = mesRandonnees.get(position).getDate();
-        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
         String strDate = dateFormat.format(date);
         holder.date.setText(strDate);
     }

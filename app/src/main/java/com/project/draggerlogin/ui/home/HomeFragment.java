@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         apiInterface = ApiClient_mes_randonnees.getApiClient().create(ApiInterface_mes_randonnees.class);
 
-        Call<String> call = apiInterface.getMesRandonnees("jose@gmail.com","Qwerty1234.");
+        Call<String> call = apiInterface.getMesRandonnees("clemtest@gmail.com","test55");
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
 
     private void ajouterRando() {
 
-        Call<String> call = apiInterface.getMesRandonnees("jose@gmail.com","Qwerty1234.");
+        Call<String> call = apiInterface.getMesRandonnees("clemtest@gmail.com","test55");
 
         call.enqueue(new Callback<String>() {
             @Override

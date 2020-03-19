@@ -1,4 +1,4 @@
-package com.project.draggerlogin.ui.randonnee;
+package com.project.draggerlogin.Asso;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,15 +10,12 @@ import androidx.fragment.app.Fragment;
 
 import com.project.draggerlogin.R;
 
-public class AddRandoFragment extends Fragment {
-
-    public AddRandoFragment() {
+public class AddAssoFragment extends Fragment {
+    public AddAssoFragment() {
     }
-
-    //private AddRandoViewModel addrandoViewModel;
-
+    //private AddAssoViewModel addAssoViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_addrando, container, false);
+        return inflater.inflate(R.layout.fragment_addasso, container, false);
     }
 }

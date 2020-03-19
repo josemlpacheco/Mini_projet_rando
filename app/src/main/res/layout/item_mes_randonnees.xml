@@ -3,24 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp">
-
     <TextView
         android:id="@+id/place"
-        android:layout_width="150dp"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:text="place"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"></TextView>
+        android:layout_marginLeft="10dp"/>
     <TextView
         android:id="@+id/date"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="date"
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center_vertical"
-        android:layout_marginLeft="10dp"></TextView>
+        android:layout_marginLeft="10dp"/>
 
 </LinearLayout>

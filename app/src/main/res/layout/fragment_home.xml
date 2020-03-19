@@ -21,7 +21,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="537dp"
-        android:layout_above="@+id/addBtn"
         android:layout_below="@+id/mesRando"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="-60dp">

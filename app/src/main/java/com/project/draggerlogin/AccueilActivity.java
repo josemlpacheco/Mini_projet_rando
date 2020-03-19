@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.project.draggerlogin.Asso.AddAssoFragment;
 import com.project.draggerlogin.ui.dashboard.DashboardFragment;
 import com.project.draggerlogin.ui.home.HomeFragment;
 import com.project.draggerlogin.ui.notifications.NotificationsFragment;
@@ -20,7 +21,8 @@ import com.project.draggerlogin.ui.randonnee.AddRandoFragment;
 
 public class AccueilActivity extends AppCompatActivity {
     private ActionBar toolbar;
-    private FloatingActionButton floatingActionButton;
+    private FloatingActionButton addbtn,addRando, addAsso;
+    boolean isOpen = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +35,49 @@ public class AccueilActivity extends AppCompatActivity {
         toolbar.setTitle("Mes randonnées");
         loadFragment(new HomeFragment());
 
-        floatingActionButton = (FloatingActionButton) findViewById(R.id.addBtn);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        addbtn = (FloatingActionButton) findViewById(R.id.addBtn);
+        addRando = (FloatingActionButton) findViewById(R.id.addRando);
+        addAsso = (FloatingActionButton) findViewById(R.id.addAsso);
+
+        addbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loadFragment(new AddRandoFragment());
+                if (!isOpen){
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
+                //loadFragment(new AddRandoFragment());
             }
         });
     }
+
+    private void closeMenu() {
+        isOpen = false;
+        addRando.animate().translationY(0);
+        addAsso.animate().translationY(0);
+    }
+
+    private void openMenu() {
+        isOpen = true;
+        addRando.animate().translationY(-getResources().getDimension(R.dimen.stan_55));
+        addAsso.animate().translationY(-getResources().getDimension(R.dimen.stan_105));
+        addRando.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeMenu();
+                loadFragment(new AddRandoFragment());
+            }
+        });
+        addAsso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                closeMenu();
+                loadFragment(new AddAssoFragment());
+            }
+        });
+    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
