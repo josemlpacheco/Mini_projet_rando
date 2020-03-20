@@ -19,8 +19,6 @@ import com.project.draggerlogin.R;
 import com.project.draggerlogin.addAccount.AddAccountActivity;
 import com.project.draggerlogin.root.App;
 
-import java.util.regex.Pattern;
-
 import javax.inject.Inject;
 
 public class LoginActivity extends AppCompatActivity implements LoginActivityMVP.View{

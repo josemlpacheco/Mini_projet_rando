@@ -23,33 +23,34 @@ public class AccueilActivity extends AppCompatActivity {
     private ActionBar toolbar;
     private FloatingActionButton addbtn,addRando, addAsso;
     boolean isOpen = false;
-    Intent intent = getIntent();
     String mail;
     String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
+        Intent intent = getIntent();
         toolbar = getSupportActionBar();
 
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+
+
         if (intent != null) {
-            if (intent.hasExtra("mail")&&intent.hasExtra("password")) {
+            if (intent.hasExtra("mail") && intent.hasExtra("password")) {
                 Bundle extra = intent.getExtras();
                 mail = extra.getString("mail");
                 password = extra.getString("password");
+                System.out.println("-------------------------------------");
+                System.out.println("Accueil Activity");
+                System.out.println("mail --> "+mail);
+                System.out.println("password --> "+password);
+                System.out.println("-------------------------------------");
             }
         }
-
         toolbar.setTitle("Mes randonnées");
-        System.out.println("-------------------------------------");
-        System.out.println("User Randonnees");
-        System.out.println("mail --> "+mail);
-        System.out.println("password --> "+password);
-        System.out.println("-------------------------------------");
-        loadFragment(new HomeFragment(mail,password));
+        loadFragment(new HomeFragment());
 
         addbtn = (FloatingActionButton) findViewById(R.id.addBtn);
         addRando = (FloatingActionButton) findViewById(R.id.addRando);
@@ -102,7 +103,7 @@ public class AccueilActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("Accueil");
-                    loadFragment(new HomeFragment(mail,password));
+                    loadFragment(new HomeFragment());
                     return true;
                 case R.id.navigation_asso:
                     toolbar.setTitle("Mon associations");
@@ -118,6 +119,10 @@ public class AccueilActivity extends AppCompatActivity {
     };
     public void loadFragment(Fragment fragment) {
         // load fragment
+        Bundle bundle = new Bundle();
+        bundle.putString("mail",mail);
+        bundle.putString("password",password);
+        fragment.setArguments(bundle);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
