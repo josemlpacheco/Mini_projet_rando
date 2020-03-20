@@ -14,4 +14,10 @@
     <string name="modif_larando">Modifier la randonnée</string>
     <string name="supp_lasso">Supprimer l\'association</string>
     <string name="supp_larando">Supprimer la randonnée</string>
+
+    <string-array name="numbers">
+        <item>Catégorie</item>
+        <item>Randonneur valide</item>
+        <item>Randonneur handicap moteur</item>
+    </string-array>
 </resources>

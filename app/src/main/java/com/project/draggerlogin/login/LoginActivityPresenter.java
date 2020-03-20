@@ -88,4 +88,9 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
             }
         }
     }
+
+    @Override
+    public void addAccount() {
+        view.account();
+    }
 }

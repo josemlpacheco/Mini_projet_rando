@@ -16,6 +16,7 @@ public interface LoginActivityMVP {
         void setIdentifiant(String identifiant);
         void setMdp(String mdp);
 
+        void account();
     }
 
     interface Presenter {
@@ -24,6 +25,8 @@ public interface LoginActivityMVP {
         void loginButtonClicked();
 
         void getCurrentUser();
+
+        void addAccount();
     }
 
     interface Model{

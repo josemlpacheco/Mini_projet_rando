@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -79,7 +79,7 @@
         android:textColor="@color/colorAccent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewAddAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Créer un compte"

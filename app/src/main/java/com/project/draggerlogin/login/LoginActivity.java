@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.draggerlogin.AccueilActivity;
 import com.project.draggerlogin.R;
+import com.project.draggerlogin.addAccount.AddAccountActivity;
 import com.project.draggerlogin.root.App;
 
 import javax.inject.Inject;
@@ -22,6 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     LoginActivityMVP.Presenter  presenter;
 
     EditText identifiant, mdp;
+    TextView addAccounttextView;
     Button loginButton;
 
     @Override
@@ -37,12 +40,19 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         identifiant = findViewById(R.id.editTextIdentifiant);
         mdp = findViewById(R.id.editTextMdp);
         loginButton = findViewById(R.id.buttonLogin);
+        addAccounttextView = findViewById(R.id.textViewAddAccount);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 presenter.loginButtonClicked();
+            }
+        });
+        addAccounttextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.addAccount();
             }
         });
     }
@@ -101,6 +111,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     @Override
     public void setMdp(String lastName) {
         this.mdp.setText(lastName);
+    }
+
+    @Override
+    public void account() {
+        Intent intent = new Intent(this, AddAccountActivity.class);
+        startActivity(intent);
     }
 
 }
