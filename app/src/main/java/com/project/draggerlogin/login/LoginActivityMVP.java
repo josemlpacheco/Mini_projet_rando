@@ -15,7 +15,9 @@ public interface LoginActivityMVP {
         void setIdentifiant(String identifiant);
         void setMdp(String mdp);
         void account();
-        boolean valiteEmail(String email);
+        void showEmailValidateError();
+        void showPasswordValidateError();
+        void validateDone();
 
     }
 

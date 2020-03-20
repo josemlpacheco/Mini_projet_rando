@@ -76,16 +76,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
             String passwordCorrect = mdp.getText().toString().trim();
             if (mailCorrect.matches("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$")) {
                 if (passwordCorrect.matches("^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$")) {
-                    loginButton.setEnabled(true);
-                    loginButton.setBackgroundColor(Color.parseColor("#023859"));
-                    loginButton.setTextColor(Color.parseColor("#DFEDF2"));
+                    validateDone();
                 } else {
-                    mdp.setError("Saisir bien votre mot de passe");
+                    showPasswordValidateError();
                 }
             } else {
-                identifiant.setError("Saisir bien votre identifiant");
+                showEmailValidateError();
                 if (!passwordCorrect.matches("^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$")) {
-                    mdp.setError("Saisir bien votre mot de passe");
+                    showPasswordValidateError();
                 }
             }
         }
@@ -157,10 +155,27 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         Intent intent = new Intent(this, AddAccountActivity.class);
         startActivity(intent);
     }
+    @Override
+    public void showEmailValidateError() {
+        identifiant.setError("Saisir bien votre identifiant");
+        loginButton.setEnabled(false);
+        loginButton.setBackgroundColor(Color.parseColor("#DFEDF2"));
+        loginButton.setTextColor(Color.parseColor("#023859"));
+    }
 
     @Override
-    public boolean valiteEmail(String email) {
-        return true;
+    public void showPasswordValidateError() {
+        mdp.setError("Saisir bien votre mot de passe");
+        loginButton.setEnabled(false);
+        loginButton.setBackgroundColor(Color.parseColor("#DFEDF2"));
+        loginButton.setTextColor(Color.parseColor("#023859"));
+    }
+
+    @Override
+    public void validateDone() {
+        loginButton.setEnabled(true);
+        loginButton.setBackgroundColor(Color.parseColor("#023859"));
+        loginButton.setTextColor(Color.parseColor("#DFEDF2"));
     }
 
 }
