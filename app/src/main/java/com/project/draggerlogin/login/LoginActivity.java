@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showUserNotAvaible() {
-        Toast.makeText(this,"Cet utilisateur n'existe pas",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Cet user n'existe pas",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -125,7 +125,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
 
     @Override
-    public void showServerError() { Toast.makeText(this,"Erreur serveur",Toast.LENGTH_SHORT).show(); }
+    public void showServerError() {
+        Toast.makeText(this,"Server Error",Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void accueil() {
@@ -135,7 +137,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showUserError() {
-        Toast.makeText(this,"Il y a une erreur dans votre information",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Il y a un error dans votre information",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -155,7 +157,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     }
     @Override
     public void showEmailValidateError() {
-        identifiant.setError("Bien saisir votre identifiant");
+        identifiant.setError("Saisir bien votre identifiant");
         loginButton.setEnabled(false);
         loginButton.setBackgroundColor(Color.parseColor("#DFEDF2"));
         loginButton.setTextColor(Color.parseColor("#023859"));
@@ -163,7 +165,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
 
     @Override
     public void showPasswordValidateError() {
-        mdp.setError("Bien saisir votre mot de passe");
+        mdp.setError("Saisir bien votre mot de passe");
         loginButton.setEnabled(false);
         loginButton.setBackgroundColor(Color.parseColor("#DFEDF2"));
         loginButton.setTextColor(Color.parseColor("#023859"));
