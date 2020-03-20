@@ -12,11 +12,11 @@ public interface LoginActivityMVP {
         void showServerError();
         void accueil();
         void showUserError();
-
         void setIdentifiant(String identifiant);
         void setMdp(String mdp);
-
         void account();
+        boolean valiteEmail(String email);
+
     }
 
     interface Presenter {

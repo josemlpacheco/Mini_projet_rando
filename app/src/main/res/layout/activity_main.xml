@@ -42,14 +42,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Identifiant"
-        android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColorHint="@color/colorAccent">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextIdentifiant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textColor="@color/colorAccent" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,8 +74,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Valider"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorAccent" />
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
+        android:enabled="false"/>
 
     <TextView
         android:id="@+id/textViewAddAccount"

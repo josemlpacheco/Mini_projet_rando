@@ -4,7 +4,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +18,8 @@ import com.project.draggerlogin.AccueilActivity;
 import com.project.draggerlogin.R;
 import com.project.draggerlogin.addAccount.AddAccountActivity;
 import com.project.draggerlogin.root.App;
+
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -42,6 +47,9 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         loginButton = findViewById(R.id.buttonLogin);
         addAccounttextView = findViewById(R.id.textViewAddAccount);
 
+        identifiant.addTextChangedListener(loginTextWatcher);
+        mdp.addTextChangedListener(loginTextWatcher);
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,7 +63,38 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
                 presenter.addAccount();
             }
         });
+
     }
+    private TextWatcher loginTextWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            String mailCorrect = identifiant.getText().toString().trim();
+            String passwordCorrect = mdp.getText().toString().trim();
+            if (mailCorrect.matches("^[^@]+@[^@]+\\.[a-zA-Z]{2,}$")) {
+                if (passwordCorrect.matches("^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$")) {
+                    loginButton.setEnabled(true);
+                    loginButton.setBackgroundColor(Color.parseColor("#023859"));
+                    loginButton.setTextColor(Color.parseColor("#DFEDF2"));
+                } else {
+                    mdp.setError("Saisir bien votre mot de passe");
+                }
+            } else {
+                identifiant.setError("Saisir bien votre identifiant");
+                if (!passwordCorrect.matches("^(?=.*\\d)(?=.*[\\u0021-\\u002b\\u003c-\\u0040])(?=.*[A-Z])(?=.*[a-z])\\S{8,16}$")) {
+                    mdp.setError("Saisir bien votre mot de passe");
+                }
+            }
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -117,6 +156,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     public void account() {
         Intent intent = new Intent(this, AddAccountActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean valiteEmail(String email) {
+        return true;
     }
 
 }
