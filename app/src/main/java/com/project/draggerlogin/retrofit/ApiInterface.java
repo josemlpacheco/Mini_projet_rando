@@ -14,4 +14,11 @@ public interface ApiInterface {
             @Field("password") String password
     );
 
+    @FormUrlEncoded
+    @POST("/MyProjects/mini_projet/mesrandonnees.php")
+    Call<String> getMesRandonnees(
+            @Field("mail") String mail,
+            @Field("password") String password
+    );
+
 }

@@ -23,6 +23,9 @@ public class AccueilActivity extends AppCompatActivity {
     private ActionBar toolbar;
     private FloatingActionButton addbtn,addRando, addAsso;
     boolean isOpen = false;
+    Intent intent = getIntent();
+    String mail;
+    String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +35,21 @@ public class AccueilActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        if (intent != null) {
+            if (intent.hasExtra("mail")&&intent.hasExtra("password")) {
+                Bundle extra = intent.getExtras();
+                mail = extra.getString("mail");
+                password = extra.getString("password");
+            }
+        }
+
         toolbar.setTitle("Mes randonnées");
-        loadFragment(new HomeFragment());
+        System.out.println("-------------------------------------");
+        System.out.println("User Randonnees");
+        System.out.println("mail --> "+mail);
+        System.out.println("password --> "+password);
+        System.out.println("-------------------------------------");
+        loadFragment(new HomeFragment(mail,password));
 
         addbtn = (FloatingActionButton) findViewById(R.id.addBtn);
         addRando = (FloatingActionButton) findViewById(R.id.addRando);
@@ -86,7 +102,7 @@ public class AccueilActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("Accueil");
-                    loadFragment(new HomeFragment());
+                    loadFragment(new HomeFragment(mail,password));
                     return true;
                 case R.id.navigation_asso:
                     toolbar.setTitle("Mon associations");

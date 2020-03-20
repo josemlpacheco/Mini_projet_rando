@@ -1,4 +1,4 @@
-package com.project.draggerlogin.retrofit;
+package com.project.draggerlogin.ui.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,12 +6,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.project.draggerlogin.R;
-import com.project.draggerlogin.ui.home.HomeFragment;
-import com.project.draggerlogin.ui.home.Randonnee;
 import com.project.draggerlogin.ui.randonnee.AffRandoFragment;
 
 import java.text.DateFormat;

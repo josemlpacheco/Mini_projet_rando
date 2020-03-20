@@ -19,6 +19,7 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
     private LoginActivityMVP.View view;
     private LoginActivityMVP.Model model;
     private ApiInterface apiInterface;
+    private MemoryRepository memoryRepository = new MemoryRepository();
 
 
     public LoginActivityPresenter(LoginActivityMVP.Model model){
@@ -64,6 +65,12 @@ public class LoginActivityPresenter implements LoginActivityMVP.Presenter {
             JSONObject jsonObject = new JSONObject(response);
             if (jsonObject.getString("status").equals("true")) {
                 view.accueil();
+                memoryRepository.saveUser(new User(view.getIdentifiant(),view.getMdp()));
+                System.out.println("-------------------------------------");
+                System.out.println("User");
+                System.out.println("mail--> "+memoryRepository.getUser().getMail());
+                System.out.println("pass-->"+memoryRepository.getUser().getPassword());
+                System.out.println("-------------------------------------");
             }else{
                 view.showUserError();
             }

@@ -53,7 +53,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 presenter.loginButtonClicked();
             }
         });
@@ -132,6 +131,10 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityMVP
     @Override
     public void accueil() {
         Intent intent = new Intent(this, AccueilActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("mail", getIdentifiant());
+        bundle.putString("password", getMdp());
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

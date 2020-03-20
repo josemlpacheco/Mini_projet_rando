@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.draggerlogin.R;
-import com.project.draggerlogin.retrofit.ApiClient_mes_randonnees;
-import com.project.draggerlogin.retrofit.ApiInterface_mes_randonnees;
-import com.project.draggerlogin.retrofit.ReclyclerAdapterMesRandonnees;
+import com.project.draggerlogin.login.MemoryRepository;
+import com.project.draggerlogin.retrofit.ApiClient;
+import com.project.draggerlogin.retrofit.ApiInterface;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,17 +27,18 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private ReclyclerAdapterMesRandonnees adapter;
     private List<Randonnee> mesRandonnees = new ArrayList<>();
-    private ApiInterface_mes_randonnees apiInterface;
+    private ApiInterface apiInterface;
     Context context;
-    public HomeFragment() {
+    private String mail;
+    private String password;
+    public HomeFragment(String mail,String password) {
+        this.mail = mail;
+        this.password = password;
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,9 +53,13 @@ public class HomeFragment extends Fragment {
         adapter = new ReclyclerAdapterMesRandonnees(mesRandonnees);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        apiInterface = ApiClient_mes_randonnees.getApiClient().create(ApiInterface_mes_randonnees.class);
-
-        Call<String> call = apiInterface.getMesRandonnees("clemtest@gmail.com","test55");
+        apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        System.out.println("-------------------------------------");
+        System.out.println("User Randonnees");
+        System.out.println("mail --> "+mail);
+        System.out.println("password --> "+password);
+        System.out.println("-------------------------------------");
+        Call<String> call = apiInterface.getMesRandonnees(mail,password);
 
         call.enqueue(new Callback<String>() {
             @Override
@@ -74,29 +79,6 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
-
-    private void ajouterRando() {
-
-        Call<String> call = apiInterface.getMesRandonnees("clemtest@gmail.com","test55");
-
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("raw-->: "+response.raw());
-                System.out.println("body-->: "+response.body());
-                System.out.println("message-->: "+response.message());
-                System.out.println("toString-->: "+response.toString());
-                parseRandonneeJson(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                System.out.println("erreur");
-                System.out.println("error -----> "+ t.toString());
-            }
-        });
-    }
-
 
     private void parseRandonneeJson(String response) {
         try {
